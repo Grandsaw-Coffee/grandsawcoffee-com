@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>grandsaw - Coffee Roasters</title>
+  <meta name="description" content="Recreating the coffee of your childhood memories">
+  <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Truculenta:wght@400;700;800&family=Albert+Sans:wght@300;400;500;600;700&display=swap');
+
+    /* Color Palette - Blue and White Porcelain */
+    :root {
+      --white: #FFFFFF;
+      --off-white: #F8FAFC;
+      --light-blue: #EFF6FF;
+      --pale-blue: #DBEAFE;
+      --medium-blue: #3B82F6;
+      --cobalt-blue: #1E40AF;
+      --navy-blue: #1E293B;
+      --accent: #2563EB;
+      --accent-light: #60A5FA;
+      --black: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--navy-blue);
+      background-color: var(--white);
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--pale-blue) 0%, var(--white) 100%);
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      min-width: 800px;
+    }
+
+    .title-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-left {
+      position: absolute;
+      left: 30.5rem;
+      transform: translateY(-50%);
+      max-height: 60px;
+      z-index: 0;
+    }
+
+    .logo-right {
+      position: absolute;
+      right: 26rem;
+      top: 50%;
+      transform: translateY(-75%);
+      max-height: 160px;
+      z-index: 0;
+    }
+    
+    .hero h1 {
+      font-family: 'Truculenta', sans-serif;
+      font-size: 7.5rem;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 0rem;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy-blue);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: -0.75rem;
+    }
+
+    .tagline {
+      font-size: 1.35rem;
+      color: var(--navy-blue);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Story Section */
+    .story-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 8rem 2rem;
+    }
+
+    .story-section h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--cobalt-blue);
+      margin-bottom: 3rem;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+
+    .story-content {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .story-content p {
+      font-size: 1.2rem;
+      line-height: 1.9;
+      color: var(--navy-blue);
+      font-weight: 300;
+    }
+
+    .story-content > p:first-of-type::first-letter {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+      float: left;
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    /* Photos Section */
+    .photos-section {
+      background: var(--light-blue);
+      padding: 8rem 2rem;
+    }
+
+    .photos-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .photos-section h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--cobalt-blue);
+      margin-bottom: 2rem;
+      letter-spacing: -1px;
+      text-align: center;
+    }
+
+    .photos-intro {
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--navy-blue);
+      max-width: 700px;
+      margin: 0 auto 5rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+    }
+
+    .photo-card {
+      background: var(--white);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(30, 64, 175, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(59, 130, 246, 0.1);
+    }
+
+    .photo-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(30, 64, 175, 0.15);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 350px;
+      background: linear-gradient(135deg, var(--pale-blue) 0%, var(--off-white) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy-blue);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .photo-caption {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .photo-caption p {
+      font-size: 1rem;
+      color: var(--navy-blue);
+      font-weight: 400;
+      margin: 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--navy-blue);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 8rem;
+        margin-right: 1rem;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        letter-spacing: 3px;
+        margin-top: -0.25rem;
+        margin-right: 1rem;
+      }
+
+      .tagline {
+        font-size: 1.15rem;
+      }
+
+      .title-container {
+        position: relative;
+        width: 100%;
+        min-width: 600px;
+      }
+
+      .logo-left {
+        position: absolute;
+        left: 2.5rem;
+        transform: translateY(-50%);
+        max-width: 60px;
+        z-index: 0;
+      }
+
+      .logo-right {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: 180px;
+        z-index: 0;
+      }
+
+      .title-text {
+        position: relative;
+        z-index: 1;
+      }
+
+      .story-section,
+      .photos-section {
+        padding: 5rem 1.5rem;
+      }
+
+      .story-section h2,
+      .photos-section h2 {
+        font-size: 2.25rem;
+      }
+
+      .story-content p {
+        font-size: 1.1rem;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        min-height: 40vh;
+        padding: 3rem 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 4.5rem;
+        margin-right: 1rem;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin-top: -0.25rem;
+        margin-right: 1rem;
+      }
+
+      .tagline {
+        font-size: 1rem;
+      }
+
+      .title-container {
+        min-width: 350px;
+      }
+
+
+      .logo-left {
+        max-height: 40px;
+        left: 1.5rem;
+      }
+
+      .logo-right {
+        max-height: 100px;
+      }
+
+      .logo {
+        max-width: 120px;
+      }
+
+      .story-section h2,
+      .photos-section h2 {
+        font-size: 2rem;
+      }
+
+      .story-content p {
+        font-size: 1.05rem;
+      }
+
+      .photo-caption {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Selection Color */
+    ::selection {
+      background: var(--accent-light);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="title-container">
+          <img src="grandsaw-bird-logo.svg" alt="grandsaw logo" class="logo-left">
+          <div class="title-text">
+            <h1>grandsaw</h1>
+            <p class="subtitle">COFFEE ROASTERS</p>
+          </div>
+          <img src="grandsaw-tree-logo-cropped.svg" alt="grandsaw logo" class="logo-right">
+        </div>
+        <p class="tagline">Sammamish, WA</p>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <h2>My Coffee Story</h2>
+      <div class="story-content">
+        <p>
+          My love for coffee began in early childhood with stolen sips from my grandparents' after-dinner mugs full of Maxwell House decaf and a bit of half-and-half. It was simple and comforting.
+        </p>
+
+        <div class="photo-card">
+          <img src="polaroid.jpeg" alt="My first birthday with Grandma and Grandpa Chainsaw, 1982">
+          <div class="photo-caption">
+            <p>My first birthday with Grandma and Grandpa Chainsaw, 1982</p>
+          </div>
+        </div>
+
+        <p>
+        Years later, I got hooked on cold brew during hot Texas mornings and delighted in afternon single shots of espresso during a trip to Italy. As I went deeper into coffee culture, I got my own espresso machine and found myself not just enjoying the drink, but also being captivated by the entire ritual: selecting beans, dialing in the grind, pulling the perfect shot. Eventually, I thought...why not go one step deeper?
+        </p>
+
+        <div class="photo-card">
+          <img src="italy.jpeg" alt="Katrina enjoying a brew in one of our favorite coffee shops in Florence, Italy, 2018">
+          <div class="photo-caption">
+            <p>Katrina enjoying a brew in one of our favorite coffee shops in Florence, Italy, 2018</p>
+          </div>
+        </div>
+
+        <p>
+          In May 2025, I bought my first small roaster and started experimenting in my garage. As my skills developed, I began roasting batches for family and friends, and the idea for Grandsaw was born. The name comes from "Grandma and Grandpa Chainsaw", a nickname that stuck after my grandfather helped cut down trees on the property where I grew up. After his passing in August 2025, it felt like the perfect way to honor their influence on my coffee journey.
+        </p>
+
+        <div class="photo-card">
+          <img src="roasting.jpeg" alt="My little roasting stations, 2025">
+          <div class="photo-caption">
+            <p>My little roasting station doing a half pound per batch, 2025</p>
+          </div>
+        </div>
+
+        <p>
+          And the bird and tree in our logo? They're pulled from the very porcelain mugs my grandparents drank from when I was young. Grandma Chainsaw, who is still going strong in her 90s, still has some of the mugs at home, but I was lucky enough to get one of them for my collection of coffee gear.
+        </p>
+
+        <div class="photo-card">
+          <img src="mug.jpeg" alt="The porcelain mug that inspired Grandsaw - notice it in the first photo?">
+          <div class="photo-caption">
+            <p>The porcelain mug that inspired Grandsaw - notice it in the first photo?</p>
+          </div>
+        </div>
+
+        <p>
+          Every batch I roast is a small tribute to not only my grandparents, but to everyone who makes my life and love for coffee special. Thanks for being a part of it!
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2025 Grandsaw Coffee Roasters</p>
+    </footer>
+  </main>
+</body>
+</html>
